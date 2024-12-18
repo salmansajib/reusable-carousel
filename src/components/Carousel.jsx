@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi2";
+import { motion } from "motion/react";
 
 function Carousel({
   children,
@@ -36,9 +37,11 @@ function Carousel({
   return (
     <div className="relative w-full overflow-hidden rounded-xl">
       {/* slides */}
-      <div
-        className="flex transition-transform duration-[700ms] ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      <motion.div
+        className="flex items-center"
+        initial={{ x: 0 }}
+        animate={{ x: `-${currentIndex * 100}%` }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         {React.Children.map(children, (child, index) => (
           <div
@@ -48,7 +51,7 @@ function Carousel({
             {child}
           </div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Buttons Arrows */}
       {showButtonArrows && (
