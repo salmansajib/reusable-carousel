@@ -11,6 +11,7 @@ function Carousel({
   showDots = true,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const slideTo = (index) => {
     const lastIndex = React.Children.count(children) - 1;
@@ -23,14 +24,14 @@ function Carousel({
   const prevSlide = () => slideTo(currentIndex - 1);
 
   useEffect(() => {
-    if (!autoPlay) return;
+    if (!autoPlay || isPaused) return;
 
     const interval = setInterval(() => {
       nextSlide();
     }, autoPlayInterval);
 
     return () => clearInterval(interval);
-  }, [currentIndex, autoPlay, autoPlayInterval]);
+  }, [currentIndex, autoPlay, autoPlayInterval, isPaused]);
 
   return (
     <div className="relative w-full overflow-hidden rounded-xl">
@@ -52,12 +53,16 @@ function Carousel({
           <button
             className="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-100/10 backdrop-blur-md hover:bg-gray-700 text-gray-50 rounded-full p-2 border border-gray-100/0 hover:border-gray-100 transition-all duration-200"
             onClick={prevSlide}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
             <HiChevronDoubleLeft size={22} />
           </button>
           <button
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-100/10 backdrop-blur-md hover:bg-gray-700 text-gray-50 rounded-full p-2 border border-gray-100/0 hover:border-gray-100 transition-all duration-200"
             onClick={nextSlide}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
             <HiChevronDoubleRight size={22} />
           </button>
@@ -73,6 +78,8 @@ function Carousel({
                 currentIndex === index ? "bg-gray-600" : "bg-gray-100/50"
               }`}
               onClick={() => slideTo(index)}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
             ></button>
           ))}
         </div>
