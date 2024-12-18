@@ -41,7 +41,10 @@ function Carousel({
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {React.Children.map(children, (child, index) => (
-          <div key={index} className="flex-none w-full">
+          <div
+            key={index}
+            className="flex-none w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
+          >
             {child}
           </div>
         ))}
