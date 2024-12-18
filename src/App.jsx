@@ -8,7 +8,7 @@ import image6 from "./assets/images/flower6.jpg";
 
 function App() {
   return (
-    <div className="bg-zinc-950 min-h-screen grid place-content-center text-gray-100 p-4">
+    <div className="bg-slate-950 min-h-screen grid place-content-center text-gray-100 p-4">
       <div>
         <div className="max-w-[950px] mx-auto">
           <Carousel autoPlay={true}>

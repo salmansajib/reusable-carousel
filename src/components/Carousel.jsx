@@ -42,6 +42,8 @@ function Carousel({
         initial={{ x: 0 }}
         animate={{ x: `-${currentIndex * 100}%` }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
         {React.Children.map(children, (child, index) => (
           <div
@@ -81,7 +83,7 @@ function Carousel({
           {React.Children.map(children, (_, index) => (
             <button
               className={`size-3 rounded-full ${
-                currentIndex === index ? "bg-gray-600" : "bg-gray-100/50"
+                currentIndex === index ? "bg-gray-700" : "bg-gray-100/50"
               }`}
               onClick={() => slideTo(index)}
               onMouseEnter={() => setIsPaused(true)}
