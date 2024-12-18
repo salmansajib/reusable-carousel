@@ -9,13 +9,13 @@ function App() {
   return (
     <div className="bg-zinc-950 min-h-screen grid place-content-center text-gray-100 p-4">
       <div>
-        <div className="max-w-[1000px] mx-auto">
+        <div className="max-w-[950px] mx-auto">
           <Carousel autoPlay={true}>
-            <img src={image1} alt="" />
-            <img src={image2} alt="" />
-            <img src={image3} alt="" />
-            <img src={image4} alt="" />
-            <img src={image5} alt="" />
+            <img src={image1} alt="carousel image1" />
+            <img src={image2} alt="carousel image2" />
+            <img src={image3} alt="carousel image3" />
+            <img src={image4} alt="carousel image4" />
+            <img src={image5} alt="carousel image5" />
           </Carousel>
         </div>
       </div>

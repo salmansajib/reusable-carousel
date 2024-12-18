@@ -36,7 +36,7 @@ function Carousel({
     <div className="relative w-full overflow-hidden rounded-xl">
       {/* slides */}
       <div
-        className="flex transition-transform duration-500 ease-in-out"
+        className="flex transition-transform duration-[700ms] ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {React.Children.map(children, (child, index) => (
@@ -50,13 +50,13 @@ function Carousel({
       {showArrows && (
         <>
           <button
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-700/50 hover:bg-gray-700 text-white rounded-full p-2"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-700/50 hover:bg-gray-700 text-white rounded-full p-2 border border-gray-100 transition-all duration-200"
             onClick={prevSlide}
           >
             <FaAngleLeft size={22} />
           </button>
           <button
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-700/50 hover:bg-gray-700 text-white rounded-full p-2"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-700/50 hover:bg-gray-700 text-white rounded-full p-2 border border-gray-100 transition-all duration-200"
             onClick={nextSlide}
           >
             <FaAngleRight size={22} />
@@ -66,11 +66,11 @@ function Carousel({
 
       {/* Dots */}
       {showDots && (
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
           {React.Children.map(children, (_, index) => (
             <button
-              className={`w-3 h-3 rounded-full ${
-                currentIndex === index ? "bg-gray-800" : "bg-gray-400"
+              className={`size-3 rounded-full ${
+                currentIndex === index ? "bg-gray-600" : "bg-gray-100/50"
               }`}
               onClick={() => slideTo(index)}
             ></button>
